@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href={{ url_for("static", filename="css/master.css") }}>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
+        <script type="text/javascript" src={{ url_for("static", filename="js/master.js") }}></script>
+    </head>
+    <body>
+        <div>
+            <label for="tentacles">Number of players (1-10):</label>
+            <input type="number" id="num_of_players" name="tentacles" min="1" max="10">
+            <button type="button" id="btn_apply" >Récupérer la valeur</button>
+        </div>
+        <div>
+            <button type="button" id="btn_load" >Load</button>
+            <button type="button" id="btn_save" >Save</button>
+        </div>
+    </body>
+</html>

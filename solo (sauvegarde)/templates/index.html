@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href={{ url_for("static", filename="css/main6.css") }}>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
+        <title> Rogue Flask into Darkness</title>
+        <script type="text/javascript" src={{ url_for("static", filename="js/main6.js") }}></script>
+    </head>
+    <body>
+        <audio controls preload="metadata" id="mus1" hidden="true" volume="80"> 
+            <source src="{{ url_for('static', filename='musics/mus1.mp3') }}" type="audio/mpeg">
+        </audio>
+        <audio controls preload="metadata" id="mus2" hidden="true" volume = "100"> 
+            <source src="{{ url_for('static', filename='musics/mus2.mp3') }}" type="audio/mpeg">
+        </audio>
+        <audio controls preload="metadata" id="mus3" hidden="true" volume = "80"> 
+            <source src="{{ url_for('static', filename='musics/mus3.mp3') }}" type="audio/mpeg">
+        </audio>
+        <audio controls preload="metadata" id="bruitage_potion" hidden="true" volume = "80"> 
+            <source src="{{ url_for('static', filename='musics/bruitage_potion.mp3') }}" type="audio/mpeg">
+        </audio>
+        <audio controls preload="metadata" id="bruitage_vortex" hidden="true" volume = "80"> 
+            <source src="{{ url_for('static', filename='musics/bruitage_vortex.mp3') }}" type="audio/mpeg">
+        </audio>
+        <audio controls preload="metadata" id="bruitage_punch" hidden="true" volume = "80"> 
+            <source src="{{ url_for('static', filename='musics/bruitage_punch.mp3') }}" type="audio/mpeg">
+        </audio>
+        <audio controls preload="metadata" id="bruitage_gold" hidden="true" volume = "80"> 
+            <source src="{{ url_for('static', filename='musics/bruitage_gold.mp3') }}" type="audio/mpeg">
+        </audio>
+        <audio controls preload="metadata" id="bruitage_grab" hidden="true" volume = "80"> 
+            <source src="{{ url_for('static', filename='musics/bruitage_grab.mp3') }}" type="audio/mpeg">
+        </audio>
+        <div id="stats">
+            <div id="title">Rogue Flask <br> Into Darkness</div>
+            <div id="gold">
+                <span> Pièces d'or </span>
+                <span id="gold_count">{{ gold_count }}</span>
+            </div>
+            <div id="attack">
+                <span>Attaque</span>
+                <span id="at">{{attack}}</span>
+            </div>
+            <div id="xp">
+                <span>Experience</span>
+                <span id="exp"> {{experience}}</span>
+            </div>
+            <div id="defence">
+                <span>Défense</span>
+                <span id="def">{{defence}}</span>
+            </div>
+            <div id="life">
+                <span > HP </span>
+                <svg id="healthBar" width="600" height="15" xmlns="http://www.w3.org/2000/svg"></svg>
+            </div>
+            <div id="dessin_inventaire_container">
+                <canvas id="dessin_inventaire" width=512 height=32></canvas>
+            </div>
+        </div>
+
+        <div id="inventaire">
+            {% for i in range(1,n_items+1) %}
+            <span class="item" id="{{ 'item{}'.format(i)}}">{{inventory_list[i-1]}}</span>
+            {% endfor %}
+        </div>
+        
+
+        <div class="flexbox" id="gameBackground">
+            <div>
+                <div id="pistemusic">
+                    <img class="button_music" alt="bouton play" id="button_play" src="{{ url_for('static', filename='pictures/button_play.png') }}"/>
+                    <img class="button_music" alt="bouton stop" id="button_pause" src="{{ url_for('static', filename='pictures/button_pause.png') }}"/>
+                    <img class="button_music" alt="bouton suivant" id="button_nextmusic" src="{{ url_for('static', filename='pictures/button_nextmusic.png') }}"/>
+                </div>
+
+                <div class="thekeypad">
+                    <div class="key"></div>
+                    <div class="key"><input id="go_n" class="keypad_btn" type="button" value="&#9650"> </div>
+                    <div class="key"></div>
+                    <div class="key"><input id="go_w" class="keypad_btn" type="button" value="&#9664"></div>
+                    <div class="key"></div>
+                    <div class="key"><input id="go_e" class="keypad_btn" type="button" value="&#9654"></div>
+                    <div class="key"></div>
+                    <div class="key"><input id="go_s" class="keypad_btn" type="button" value="&#9660"></div>
+                    <div class="key"></div>
+                </div>
+            </div>
+            <div id="console" style="font-family: monospace;">
+                {% for i in range(n_row) %}
+                <div style="height:18px">
+                    {% for j in range(n_col) %}
+                    <span id="{{ 'cell {}-{}'.format(i,j) }}"> {{mapdata[i][j]}}</span>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <canvas id="dessinMap" width=1344 height=576></canvas>
+        </div>
+        
+        <div hidden>
+            <img id="picture_player" alt="Joueur" class="picture" src="{{ url_for('static', filename='pictures/player.png') }}"/>
+            <img id="picture_monster" alt="Monstre" class="picture" src="{{ url_for('static', filename='pictures/monster.png') }}"/>
+            <img id="picture_gold" alt="Or" class="picture" src="{{ url_for('static', filename='pictures/gold.png') }}"/>
+            <img id="picture_seller" alt="Vendeur" class="picture" src="{{ url_for('static', filename='pictures/seller.png') }}"/>
+            <img id="picture_potion" alt="Potion" class="picture" src="{{ url_for('static', filename='pictures/potion.png') }}"/>
+            <img id="picture_ground0" alt="Sol0" class="picture_large" src="{{ url_for('static', filename='pictures/ground0.jpg') }}"/>
+            <img id="picture_ground1" alt="Sol1" class="picture_large" src="{{ url_for('static', filename='pictures/ground1.jpg') }}"/>
+            <img id="picture_ground2" alt="Sol2" class="picture_large" src="{{ url_for('static', filename='pictures/ground2.jpg') }}"/>
+            <img id="picture_wall" alt="Mur" class="picture_large" src="{{ url_for('static', filename='pictures/wall.png') }}"/>
+            <img id="picture_vortex" alt="Vortex" class="picture_vortex" src="{{ url_for('static', filename='pictures/vortex.png') }}"/>
+            <img id="picture_empty_slot" alt="Slot_vide" class="picture" src="{{ url_for('static', filename='pictures/empty_slot.jpg')}}"/>
+            <span id="hp_count">{{hp_count}}</span>
+            <span id="map">{{mapdata}}</span>
+            <span id="inventory">{{inventory_list}}</span>
+            <span id="nitems">{{n_items}}</span>
+            <span id="nrow">{{n_row}}</span>
+            <span id="ncol">{{n_col}}</span>
+        </div>
+
+    </body>
+</html>

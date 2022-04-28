@@ -1,0 +1,201 @@
+body{
+    background-color: rgb(172, 171, 231);
+}
+
+#stats{
+    display : grid ;
+    grid-template-areas: "titleArea goldArea attackArea lifeArea" "titleArea xpArea defenceArea inventaireArea";
+    grid-template-columns: 2fr 1fr 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
+    border : 3px solid rgba(11, 3, 85, 0.822) ;
+    border-style: dashed ;
+    border-bottom-color: rgb(49, 0, 0);
+    border-radius: 5px;
+    margin : 10px ;
+    margin-bottom: 2px;
+    text-align: left;
+    background-color: rgb(33, 0, 63);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: bold;
+}
+
+#title{
+    font-size: x-large;
+    font-family: fantasy;
+    font-style: oblique;
+    font-weight: bold;
+    color: rgb(165, 1, 1);
+    background-color: black;
+    text-align: center;
+    grid-area: titleArea;
+}
+
+#gold{
+    background-color:goldenrod ;
+    grid-area: goldArea;
+    padding-left: 5px;
+    padding-top: 5px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#attack{
+    background-color: lightgreen;
+    grid-area: attackArea;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#life{
+    border-left: 1px solid black;
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: cyan;
+}
+
+#xp{
+    background-color:goldenrod ;
+    grid-area: xpArea;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#defence{
+    background-color: lightgreen;
+    grid-area: defenceArea;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+
+#dessin_inventaire_container{
+    grid-area : inventaireArea;
+    background-color: cyan;
+    align-items: center;
+}
+
+#dessin_inventaire{
+    border-left: 1px solid black;
+}
+
+#inventaire{
+    position : absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+.item{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: oblique;
+    text-align: center;
+    border : 2px solid black;
+}
+
+#item1{
+    color:darkblue;
+}
+
+#item2{
+    color:darkred;
+}
+
+#item3{
+    color:darkorange;
+}
+
+#item4{
+    color: darkviolet;
+}
+
+#item5{
+    color:darkslategray;
+}
+
+#item6{
+    color:chartreuse;
+}
+
+#item7{
+    color:darkorchid;
+}
+
+#item8{
+    color:yellowgreen;
+}
+
+.button_music{
+    width : 20px;
+    height : 20px;
+}
+
+#pistemusic{
+    padding-top : 3px;
+    display : grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: black;
+    border : 2px solid rgb(7, 7, 105);
+    border-radius: 2px;
+    width:70px;
+    margin-bottom: 15px;
+    margin-left : 10px;
+    align-items: center;
+    padding : 4px; 
+    opacity : 0.75;
+}
+
+.flexbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin : 10px;
+    border : 3px solid black ;
+    padding:5px;
+}
+
+#gameBackground{
+    background-color: rgb(233, 220, 164);
+}
+#console{
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+.thekeypad{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 35px;
+    grid-gap: 5px;
+    max-width:120px;
+}
+
+.keypad_btn{
+    background-color: black;
+    opacity: 0.75;
+    color: cyan;
+    border : 2px solid rgb(7, 7, 105);
+}
+
+#dessinMap{
+    border : 3px solid rgb(7, 7, 105);
+}
+
+#dessin_inventaire{
+    border : 3px solid rgb(7, 7, 105);
+}
+
+.picture{
+    width: 14px;
+    height :14px;
+}
+
+.picture_large{
+    width:14px;
+    height:18px;
+}
